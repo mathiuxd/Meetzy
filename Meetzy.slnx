@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Core/Meetzy.Application/Meetzy.Application.csproj" />
+  <Project Path="Core/Meetzy.Domain/Meetzy.Domain.csproj" />
+  <Project Path="Infrastructure/Meetzy.Persistence/Meetzy.Persistence.csproj" />
+  <Project Path="" />
+  <Project Path="Tests/Meetzy.Tests/Meetzy.Tests.csproj" />
+</Solution>
