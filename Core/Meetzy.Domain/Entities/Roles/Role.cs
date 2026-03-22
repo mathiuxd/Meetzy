@@ -1,15 +1,14 @@
 using Meetzy.Domain.Exceptions;
-using System.Xml.Linq;
 
-namespace Meetzy.Domain.Entities.Roles
+namespace Meetzy.Domain.Entities.Role
 {
-    public class Roles
+    public sealed class Role
     {
         public Guid RoleId { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
 
-        public Roles(string name, string description)
+        public Role(string name, string description)
         {
             ApplyBussinessRuleForName(name);
 
@@ -18,7 +17,7 @@ namespace Meetzy.Domain.Entities.Roles
             Description = description;
         }
 
-        private void ApplyBussinessRuleForName(string name) 
+        private static void ApplyBussinessRuleForName(string name) 
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new BussinessRuleExceptions($"El {nameof(name)} es requerido.");
