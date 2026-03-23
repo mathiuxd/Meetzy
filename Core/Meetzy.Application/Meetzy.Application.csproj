@@ -10,4 +10,9 @@
     <ProjectReference Include="../Meetzy.Domain/Meetzy.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCases\Sections\Commands\" />
+    <Folder Include="UseCases\Sections\Queries\" />
+  </ItemGroup>
+
 </Project>
