@@ -1,34 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Reflection;
+﻿using System.Reflection;
 using Meetzy.Application.Exceptions;
 
 namespace Meetzy.Application.Utilities.Mediator
 {
-    public class SimpleMediator : IMediator
+    public class SimpleMediator(IServiceProvider serviceProvider) : IMediator
     {
-        private readonly IServiceProvider _serviceProvider;
-
-        public SimpleMediator(IServiceProvider serviceProvider)
-        {
-            _serviceProvider = serviceProvider;
-        }
+        private readonly IServiceProvider _serviceProvider = serviceProvider;
 
         public async Task<TResponse> Send<TResponse>(IRequest<TResponse> request)
         { 
             Type useCaseType = typeof(IRequestHandler<,>).MakeGenericType(request.GetType(), typeof(TResponse));
 
-            var useCase = _serviceProvider.GetService(useCaseType);
-
-            if (useCase == null) 
-            {
-                throw new MediatorException($"No se encontró un handler para {request.GetType().Name}");
-            }
-
+            var useCase = _serviceProvider.GetService(useCaseType) ?? throw new MediatorException($"No se encontró un handler para {request.GetType().Name}");
             MethodInfo method = useCaseType.GetMethod("Handle")!;
 
-            return await (Task<TResponse>)method.Invoke(useCase, new object[] { request })!;
+            return await (Task<TResponse>)method.Invoke(useCase, [request])!;
         }
         
 
@@ -36,13 +22,8 @@ namespace Meetzy.Application.Utilities.Mediator
         {
             Type useCaseType = typeof(IRequestHandler<>).MakeGenericType(request.GetType());
 
-            var useCase = _serviceProvider.GetService(useCaseType);
-
-            if (useCase is null) 
-            {
-                throw new MediatorException($"No se encontró un handler para {request.GetType().Name}");
-            }
-
+            var useCase = _serviceProvider.GetService(useCaseType) ?? throw new MediatorException($"No se encontró un handler para {request.GetType().Name}");
+            
             MethodInfo method = useCaseType.GetMethod("Handle")!;
 
             await (Task)method.Invoke(useCase, [request])!;
