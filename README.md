@@ -29,3 +29,4 @@ git push origin dev
 ## Issues — qué está pendiente
 
 Los pendientes están en la pestaña **Projects** del repo. Antes de empezar a trabajar en algo, fíjense ahí para no pisar el trabajo de alguien más.
+Para empezar una tarea solo es mover la cajita a **in progress** y cuando la terminen y hagan el push moverla a **Done**
