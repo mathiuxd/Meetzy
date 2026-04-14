@@ -19,10 +19,11 @@ git pull origin dev
 > ⚠️ Si no hacen pull antes de empezar, van a tener conflictos. Siempre pull primero.
 
 cuando terminen alguna tarea hacen lo siguiente:
-git add .
-git commit -m "Descripcion de lo que hicieron" <--- aqui traten de ser breves y especificos en lo que hicieron
+```bash
+git add .  
+git commit -m "Descripcion de lo que hicieron" <--- aqui traten de ser breves y especificos en lo que hicieron  
 git push origin dev
-
+```
 
 ### si tienen conflictos avisenme
 
