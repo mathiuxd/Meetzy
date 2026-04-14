@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Meetzy.Application.Contracts.Persistence;
 using Meetzy.Domain;
 
 namespace Meetzy.Application.Contracts.Repositories
