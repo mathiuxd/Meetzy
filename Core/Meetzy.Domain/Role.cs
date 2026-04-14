@@ -1,0 +1,32 @@
+using System;
+using Meetzy.Domain.Exceptions;
+
+namespace Meetzy.Domain;
+
+public class Role
+{
+    public Guid RoleId { get; private set; }
+    public string Name { get; private set; } = string.Empty;
+    public string? Description { get; private set; }
+    public ICollection<RolePermission> Permissions { get; private set; } = [];
+
+    private Role() { }//Esto es para EF
+
+     public Role(string name, string? description)
+    {   
+        ValidateName(name);
+        RoleId = Guid.NewGuid();
+        Name = name;
+        Description = description;
+    }
+
+     private static void ValidateName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new BussinessRuleExceptions("El nombre del rol no puede estar vacío.");
+        if (name.Length > 50)
+            throw new BussinessRuleExceptions("El nombre del rol no puede superar los 50 caracteres.");
+    }
+
+
+}
