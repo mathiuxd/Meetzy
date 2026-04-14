@@ -9,11 +9,13 @@ namespace Meetzy.Application.UseCases.Events.Commands.CreateEvent
     {
         private readonly IUnitOfWork _unitOfWork;
 
+        //Agrupa repositorios
         public CreateEventHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
+        //Maneja la lógica de negocio para crear un evento
         public async Task<CreateEventResponse> Handle(CreateEventRequest request)
         {
             var @event = new Event(
@@ -27,9 +29,11 @@ namespace Meetzy.Application.UseCases.Events.Commands.CreateEvent
                 request.CommunityId
             );
 
+            //Guarda en la base de datos
             await _unitOfWork.Events.AddAsync(@event);
             await _unitOfWork.SaveChangesAsync();
 
+            //Retorna la respuesta
             return new CreateEventResponse(
                 @event.EventId,
                 @event.Title,

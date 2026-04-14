@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Meetzy.Application.UseCases.Sections.Commands.ActivateSection
 {
-    internal class ActivateSectionCommand : IRequestHandler<ActivateSectionCommand>
+    public class ActivateSectionCommand : IRequest
     {
+        public required Guid Id { get; set; }
     }
 }

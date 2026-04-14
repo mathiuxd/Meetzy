@@ -10,6 +10,9 @@ namespace Meetzy.Application.Contracts.Persistence
         ICommunityRepository Communities { get; }
         IFriendshipRepository Friendships { get; }
         ICommentRepository Comments { get; }
+
+        Task CommitAsync();
+        Task RollbackAsync();
         Task<int> SaveChangesAsync();
     }
 }
