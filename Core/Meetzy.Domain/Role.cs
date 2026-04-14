@@ -1,4 +1,5 @@
 using System;
+using Meetzy.Domain.Exceptions;
 
 namespace Meetzy.Domain;
 
@@ -12,10 +13,19 @@ public class Role
     private Role() { }//Esto es para EF
 
      public Role(string name, string? description)
-    {
+    {   
+        ValidateName(name);
         RoleId = Guid.NewGuid();
         Name = name;
         Description = description;
+    }
+
+     private static void ValidateName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new BussinessRuleExceptions("El nombre del rol no puede estar vacío.");
+        if (name.Length > 50)
+            throw new BussinessRuleExceptions("El nombre del rol no puede superar los 50 caracteres.");
     }
 
 

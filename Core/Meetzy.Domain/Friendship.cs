@@ -1,4 +1,5 @@
 using System;
+using Meetzy.Domain.Exceptions;
 
 namespace Meetzy.Domain;
 
@@ -19,5 +20,19 @@ public class Friendship
         UserSendId = userSendId;
         UserReceivesId = userReceivesId;
         Status = FriendshipStatus.Pending; // siempre empieza Pending
+    }
+
+    public void Accept()
+    {
+        if (Status != FriendshipStatus.Pending)
+            throw new BussinessRuleExceptions("Solo se pueden aceptar solicitudes pendientes.");
+        Status = FriendshipStatus.Accepted;
+    }
+
+    public void Reject()
+    {
+        if (Status != FriendshipStatus.Pending)
+            throw new BussinessRuleExceptions("Solo se pueden rechazar solicitudes pendientes.");
+        Status = FriendshipStatus.Rejected;
     }
 }

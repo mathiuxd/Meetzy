@@ -1,4 +1,5 @@
 using System;
+using Meetzy.Domain.Exceptions;
 
 namespace Meetzy.Domain;
 
@@ -16,12 +17,21 @@ public class Community
     private Community() { }
 
     public Community(string name, CommunityType type, Guid createdBy, string? description = null)
-    {
+    {   
+        ValidateName(name);
         CommunityId = Guid.NewGuid();
         Name = name;
         Type = type;
         CreatedBy = createdBy;
         Description = description;
         CreatedAt = DateTime.UtcNow;
+    }
+
+    private static void ValidateName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new BussinessRuleExceptions("El nombre de la comunidad no puede estar vacío.");
+        if (name.Length > 150)
+            throw new BussinessRuleExceptions("El nombre no puede superar los 150 caracteres.");
     }
 }
