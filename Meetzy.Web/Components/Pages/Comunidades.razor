@@ -1,0 +1,40 @@
+@page "/comunidades"
+
+<div class="container-fluid">
+    <h2 style="color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); font-weight: bold;">
+        EXPLORA LAS COMUNIDADES
+    </h2>
+    <p style="color: var(--text-muted); margin-bottom: 30px;">
+        [Selecciona una comunidad para ver los parches y eventos que tienen programados para ti]
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+        @foreach (var comunidad in listaComunidades)
+        {
+            <div class="meetzy-card">
+                <div style="height: 5px; background: var(--neon-cyan); margin-bottom: 15px; box-shadow: 0 0 10px var(--neon-cyan);"></div>
+                <h3 style="color: white; text-transform: uppercase;">@comunidad</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    [Aquí va la descripción de la comunidad @comunidad. Habla sobre qué tipo de personas se reúnen y qué actividades suelen hacer]
+                </p>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                    <span style="color: var(--neon-pink); font-size: 0.8rem;">● 12 Eventos activos</span>
+                    <NavLink href="@($"/eventos/{Uri.EscapeDataString(comunidad.Trim())}")" class="btn-neon" style="font-size: 0.7rem; text-decoration: none;">
+                        VER PARCHES
+                    </NavLink>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    // Simulación de datos de comunidades en Medellín
+    private List<string> listaComunidades = new() { 
+        "tech-blockchain", 
+        "social-rumbas", 
+        "runners", 
+        "artes-bellas",
+        "fotografia"
+    };
+}
