@@ -41,7 +41,7 @@ namespace Meetzy.Persistence.Configurations
             builder.Property(e => e.CreatedAt)
                 .IsRequired();
 
-            // Relationships
+            // Relationships .
             builder.HasMany(e => e.Attendees)
                 .WithOne(a => a.Event)
                 .HasForeignKey(a => a.EventId)
