@@ -1,4 +1,4 @@
-using Microsft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Meetzy.Domain;
 
