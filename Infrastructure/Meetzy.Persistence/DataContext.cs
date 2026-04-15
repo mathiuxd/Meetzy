@@ -17,7 +17,7 @@ namespace Meetzy.Persistence
         public DbSet<EventAttendee> EventAttendees { get; set; }
         public DbSet<Community> Communities { get; set; }
         public DbSet<CommunityMember> CommunityMembers { get; set; }
-        public DbSet<FriendShip> FriendShips { get; set; }
+        public DbSet<Friendship> Friendships { get; set; }
         public DbSet<Permission> Permissions { get; set; }
 
 

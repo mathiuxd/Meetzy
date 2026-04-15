@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Meetzy.Domain;
 
+
 namespace Meetzy.Persistence.Configurations
 {
     public class EventConfiguration : IEntityTypeConfiguration<Event>
@@ -53,13 +54,13 @@ namespace Meetzy.Persistence.Configurations
                 .OnDelete(DeleteBehavior.Cascade);
 
             // Creator relationship 
-            builder.HasOne<User>()
+            builder.HasOne(e => e.Creator)
                 .WithMany()
                 .HasForeignKey(e => e.CreatorId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             // Community relationship
-            builder.HasOne<Community>()
+            builder.HasOne(e => e.Community)
                 .WithMany()
                 .HasForeignKey(e => e.CommunityId)
                 .OnDelete(DeleteBehavior.SetNull);
