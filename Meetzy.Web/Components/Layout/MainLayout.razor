@@ -2,22 +2,31 @@
 
 <div class="page">
     <div class="sidebar">
-        <NavMenu />
+        <h2 style="color: var(--neon-pink); font-weight: bold; margin-bottom: 0;">MEETZY</h2>
+        <p style="font-size: 0.7rem; color: var(--text-gray); margin-bottom: 20px;">🔥EXPLORA NUEVAS EXPERIENCIAS, VIVE TUS HOBBIES ¡SE UN MEETZER!❤️ </p>
+
+        <hr style="border-color: rgba(255,255,255,0.1); margin: 20px 0;" />
+
+        <nav>
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All" style="display:block; margin: 10px 0; color: var(--neon-cyan); text-decoration: none;">
+                🏠 INICIO
+            </NavLink>
+            <NavLink class="nav-link" href="comunidades" style="display:block; margin: 10px 0; color: var(--neon-cyan); text-decoration: none;">
+                🏙️ COMUNIDADES
+            </NavLink>
+
+            
+            <!-- Opción para usuarios anónimos -->
+            <div style="margin-top: 50px; padding: 15px; border: 1px dashed var(--neon-pink); border-radius: 10px; background: rgba(255,0,122,0.05);">
+                <p style="font-size: 0.65rem; color: white; line-height: 1.2; margin-bottom: 10px;">
+                    INGRESA A NUESTRAS COMUNIDADES, ENTRA A LA MODA  MEETZY
+                </p>
+                <button class="btn-neon-pink" style="width: 100%; cursor: pointer;">INGRESAR</button>
+            </div>
+        </nav>
     </div>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
-            @Body
-        </article>
+    <main class="main-content">
+        @Body
     </main>
-</div>
-
-<div id="blazor-error-ui" data-nosnippet>
-    An unhandled error has occurred.
-    <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
 </div>

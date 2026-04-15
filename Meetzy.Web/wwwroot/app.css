@@ -22,7 +22,7 @@ body {
 }
 
 .main-content {
-    margin-left: 280px; 
+    margin-left: 280px;
     padding: 40px;
     min-height: 100vh;
 }
@@ -42,3 +42,88 @@ body {
         color: white;
         box-shadow: 0 0 15px var(--neon-pink);
     }
+
+.hero-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    padding: 20px;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.glass-card {
+    max-width: 800px;
+    text-align: center;
+}
+
+
+.main-title {
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.text-neon-pink {
+    <<<<<<< Updated upstream color: #ff00ff;
+}
+
+.subtitle {
+    color: #00ffff;
+    ======= color: #ff00ff;
+}
+
+.subtitle {
+    color: #00ffff;
+    >>>>>>> Stashed changes margin-top: 25px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.content-section {
+    margin-top: 45px;
+}
+
+.question-text {
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.description {
+    color: #a0a0a0;
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+    line-height: 1.6;
+}
+
+.btn-outline-modern {
+    display: inline-block;
+    padding: 12px 40px;
+    <<<<<<< Updated upstream color: #00d2ff;
+    ======= color: #00d2ff;
+    >>>>>>> Stashed changes text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border: 1.5px solid #00d2ff;
+    <<<<<<< Updated upstream border-radius: 2px;
+    ======= border-radius: 2px;
+    >>>>>>> Stashed changes background: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+    .btn-outline-modern:hover {
+        background-color: rgba(0, 210, 255, 0.1);
+        box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        transform: scale(1.02);
+        color: white;
+        border-color: white;
+        <<<<<<< Updated upstream
+    }
+
+=======
+}
+> > > > > > > Stashed changes
