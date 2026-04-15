@@ -19,7 +19,7 @@
                 </p>
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
                     <span style="color: var(--neon-pink); font-size: 0.8rem;">● 12 Eventos activos</span>
-                    <NavLink href="@($"/eventos/{comunidad}")" class="btn-neon" style="font-size: 0.7rem; text-decoration: none;">
+                    <NavLink href="@($"/eventos/{Uri.EscapeDataString(comunidad.Trim())}")" class="btn-neon" style="font-size: 0.7rem; text-decoration: none;">
                         VER PARCHES
                     </NavLink>
                 </div>
