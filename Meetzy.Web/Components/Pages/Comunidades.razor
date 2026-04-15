@@ -1,43 +1,75 @@
 @page "/comunidades"
 
 <div class="container-fluid">
-    <h2 style="color: var(--neon-cyan);">EXPLORA LAS COMUNIDADES</h2>
+    <h2 style="color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); font-weight: bold;">
+        EXPLORA LAS COMUNIDADES
+    </h2>
 
-    <!-- BOTÓN CREAR -->
-    <div style="margin-bottom: 20px;">
-        <button class="btn-neon">+ CREAR COMUNIDAD</button>
-    </div>
+    <p style="color: var(--text-muted); margin-bottom: 30px;">
+        Selecciona una comunidad para ver los parches y eventos
+    </p>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+        @foreach (var comunidad in listaComunidades)
+        {
+            <div class="meetzy-card">
+                <div style="height: 5px; background: var(--neon-cyan); margin-bottom: 15px;"></div>
 
-        <div class="meetzy-card">
-            <h3>Tech & Blockchain 🧑🏻‍💻</h3>
-            <p>Programación, IA y desarrollo.</p>
+                <!-- ✅ AQUÍ ESTABA EL ERROR -->
+                <h3 style="color: white;">@comunidad.Nombre</h3>
 
-            
-            <div style="margin-top: 10px;">
-                <button class="btn-neon">EDITAR</button>
-                <button class="btn-neon" style="border-color:red; color:red;">ELIMINAR</button>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    @comunidad.Descripcion
+                </p>
+
+                <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                    <span style="color: var(--neon-pink); font-size: 0.8rem;">
+                        ● Eventos activos
+                    </span>
+
+                    <NavLink href="@($"/eventos/{comunidad.Slug}")" class="btn-neon">
+                        VER PARCHES
+                    </NavLink>
+                </div>
             </div>
-
-            <NavLink href="/eventos/tech" class="btn-neon" style="margin-top:10px;">
-                VER PARCHES
-            </NavLink>
-        </div>
-
-        <div class="meetzy-card">
-            <h3>Social & Rumbas 🕺🏻</h3>
-            <p>Fiesta y vida nocturna.</p>
-
-            <div>
-                <button class="btn-neon">EDITAR</button>
-                <button class="btn-neon" style="border-color:red; color:red;">ELIMINAR</button>
-            </div>
-
-            <NavLink href="/eventos/social" class="btn-neon">
-                VER PARCHES
-            </NavLink>
-        </div>
-
+        }
     </div>
 </div>
+
+@code {
+    public class Comunidad
+    {
+        public string Nombre { get; set; } = string.Empty;
+        public string Slug { get; set; } = string.Empty;
+        public string Descripcion { get; set; } = string.Empty;
+    }
+
+    private List<Comunidad> listaComunidades = new()
+    {
+        new Comunidad {
+            Nombre = "Tech & Blockchain 🧑🏻‍💻",
+            Slug = "tech",
+            Descripcion = "Espacio para programadores, devs y amantes de la tecnología."
+        },
+        new Comunidad {
+            Nombre = "Social & Rumbas 🕺🏻",
+            Slug = "social",
+            Descripcion = "Salir, conocer gente y disfrutar la vida nocturna."
+        },
+        new Comunidad {
+            Nombre = "Runners 🏃🏻",
+            Slug = "runners",
+            Descripcion = "Entrenamiento, running y vida saludable."
+        },
+        new Comunidad {
+            Nombre = "Artes Bellas 🎨",
+            Slug = "arte",
+            Descripcion = "Creatividad, pintura, música y expresión artística."
+        },
+        new Comunidad {
+            Nombre = "Fotografía 📸",
+            Slug = "foto",
+            Descripcion = "Captura momentos y aprende fotografía."
+        }
+    };
+}

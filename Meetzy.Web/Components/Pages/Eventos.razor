@@ -2,28 +2,82 @@
 
 <div class="container-fluid">
 
-    <NavLink href="/comunidades">← VOLVER</NavLink>
+    <NavLink href="/comunidades" style="font-size: 0.8rem;">
+        ← VOLVER
+    </NavLink>
 
-    <h2 style="color: var(--neon-pink);">
-        EVENTOS
+    <h2 style="color: var(--neon-pink); margin-top: 10px;">
+        EVENTOS EN @ComunidadNombre.ToUpper()
     </h2>
 
-    
-    <button class="btn-neon" style="margin-bottom:20px;">
-        + CREAR EVENTO
-    </button>
+    @foreach (var evento in eventosFiltrados)
+    {
+        <div class="meetzy-card" style="border-left: 4px solid var(--neon-cyan);">
 
-    <div class="meetzy-card">
-        <h3>Evento Ejemplo</h3>
-        <p>Descripción del evento.</p>
+            <div style="display: flex; justify-content: space-between;">
+                <h3 style="color: white;">@evento.Titulo</h3>
+                <span>@evento.Fecha</span>
+            </div>
 
-        
-        <div>
-            <button class="btn-neon">EDITAR</button>
-            <button class="btn-neon" style="border-color:red; color:red;">ELIMINAR</button>
+            <p>@evento.Descripcion</p>
+
+            <div style="margin-top: 10px;">
+                <button class="btn-neon">Asistir</button>
+                <button class="btn-neon">Me interesa</button>
+            </div>
+
         </div>
-        no me deja hacer el pull dime porque
-        <button class="btn-neon">ASISTIR</button>
-    </div>
-
+    }
 </div>
+
+@code {
+    [Parameter] public string ComunidadNombre { get; set; } = "";
+
+    private List<Evento> eventosFiltrados = new();
+
+    protected override void OnParametersSet()
+    {
+        eventosFiltrados = ObtenerEventos(ComunidadNombre);
+    }
+
+    private List<Evento> ObtenerEventos(string comunidad)
+    {
+        return comunidad switch
+        {
+            "tech" => new List<Evento>
+            {
+                new Evento { Titulo = "Hackathon", Fecha = "10 Mayo", Descripcion = "Crea proyectos tech." },
+                new Evento { Titulo = "Charla IA", Fecha = "15 Mayo", Descripcion = "Aprende sobre IA." }
+            },
+
+            "social" => new List<Evento>
+            {
+                new Evento { Titulo = "Fiesta", Fecha = "12 Mayo", Descripcion = "Rumba en Medellín." }
+            },
+
+            "runners" => new List<Evento>
+            {
+                new Evento { Titulo = "Running 5K", Fecha = "8 Mayo", Descripcion = "Entrena con el grupo." }
+            },
+
+            "arte" => new List<Evento>
+            {
+                new Evento { Titulo = "Taller pintura", Fecha = "14 Mayo", Descripcion = "Explora tu arte." }
+            },
+
+            "foto" => new List<Evento>
+            {
+                new Evento { Titulo = "Ruta fotos", Fecha = "16 Mayo", Descripcion = "Fotografía urbana." }
+            },
+
+            _ => new List<Evento>()
+        };
+    }
+
+    public class Evento
+    {
+        public string Titulo { get; set; } = string.Empty;
+        public string Fecha { get; set; } = string.Empty;
+        public string Descripcion { get; set; } = string.Empty;
+    }
+}
