@@ -1,54 +1,78 @@
-<<<<<<< HEAD
 @page "/eventos/{ComunidadNombre}"
 
 <div class="container-fluid">
-    <NavLink href="/comunidades" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem;">
-        ← VOLVER A COMUNIDADES
+
+    <NavLink href="/comunidades" style="font-size: 0.8rem;">
+        ← VOLVER
     </NavLink>
 
-    <h2 style="color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); margin-top: 10px;">
+    <h2 style="color: var(--neon-pink); margin-top: 10px;">
         EVENTOS EN @ComunidadNombre.ToUpper()
     </h2>
 
-    @foreach (var evento in eventosSimulados)
+    @foreach (var evento in eventosFiltrados)
     {
         <div class="meetzy-card" style="border-left: 4px solid var(--neon-cyan);">
+
             <div style="display: flex; justify-content: space-between;">
                 <h3 style="color: white;">@evento.Titulo</h3>
-                <span style="color: var(--neon-cyan);">@evento.Fecha</span>
-            </div>
-            
-            <p style="color: var(--text-muted); margin: 15px 0;">
-                @evento.Descripcion
-            </p>
-
-            <!-- Botones de Acción -->
-            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <button class="btn-neon" style="font-size: 0.8rem;">Confirmar Asistencia</button>
-                <button class="btn-neon" style="border-color: #ffcc00; color: #ffcc00; font-size: 0.8rem;">Me interesa</button>
-                <button class="btn-neon" style="border-color: var(--neon-pink); color: var(--neon-pink); font-size: 0.8rem;">Cancelar</button>
+                <span>@evento.Fecha</span>
             </div>
 
-            <!-- Sección de Comentarios (Visual) -->
-            <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
-                <h5 style="font-size: 0.9rem; color: var(--neon-cyan);">Comentarios del parche:</h5>
-                <p style="font-size: 0.8rem; color: #ccc;"><strong>@@UsuarioAnonimo:</strong> [Texto: ¿A qué horas termina el evento?]</p>
-                <input type="text" placeholder="Escribe un comentario..."
-                       style="background: transparent; border: 1px solid #444; color: white; width: 100%; padding: 5px; font-size: 0.8rem;" />
+            <p>@evento.Descripcion</p>
+
+            <div style="margin-top: 10px;">
+                <button class="btn-neon">Asistir</button>
+                <button class="btn-neon">Me interesa</button>
             </div>
+
         </div>
     }
 </div>
 
 @code {
-    [Parameter] public string ComunidadNombre { get; set; } = "General";
+    [Parameter] public string ComunidadNombre { get; set; } = "";
 
-    // Datos de ejemplo para simular la vista
-    private List<Evento> eventosSimulados = new()
+    private List<Evento> eventosFiltrados = new();
+
+    protected override void OnParametersSet()
     {
-        new Evento { Titulo = "[Título: Picnic Neón en el Parque]", Fecha = "15 Mayo - 7:00 PM", Descripcion = "[Descripción: Un espacio para compartir música y arte digital bajo las luces de Medellín]" },
-        new Evento { Titulo = "[Título: Meetup de Creadores]", Fecha = "20 Mayo - 6:00 PM", Descripcion = "[Descripción: Networking para los creadores de contenido de la comunidad]" }
-    };
+        eventosFiltrados = ObtenerEventos(ComunidadNombre);
+    }
+
+    private List<Evento> ObtenerEventos(string comunidad)
+    {
+        return comunidad switch
+        {
+            "tech" => new List<Evento>
+            {
+                new Evento { Titulo = "Hackathon", Fecha = "10 Mayo", Descripcion = "Crea proyectos tech." },
+                new Evento { Titulo = "Charla IA", Fecha = "15 Mayo", Descripcion = "Aprende sobre IA." }
+            },
+
+            "social" => new List<Evento>
+            {
+                new Evento { Titulo = "Fiesta", Fecha = "12 Mayo", Descripcion = "Rumba en Medellín." }
+            },
+
+            "runners" => new List<Evento>
+            {
+                new Evento { Titulo = "Running 5K", Fecha = "8 Mayo", Descripcion = "Entrena con el grupo." }
+            },
+
+            "arte" => new List<Evento>
+            {
+                new Evento { Titulo = "Taller pintura", Fecha = "14 Mayo", Descripcion = "Explora tu arte." }
+            },
+
+            "foto" => new List<Evento>
+            {
+                new Evento { Titulo = "Ruta fotos", Fecha = "16 Mayo", Descripcion = "Fotografía urbana." }
+            },
+
+            _ => new List<Evento>()
+        };
+    }
 
     public class Evento
     {
@@ -56,10 +80,4 @@
         public string Fecha { get; set; } = string.Empty;
         public string Descripcion { get; set; } = string.Empty;
     }
-=======
-﻿<h3>Eventos</h3>
-
-@code {
-
->>>>>>> 4e0b35a62bde8e3c3dbc8c76fadac5ec002db33c
 }
