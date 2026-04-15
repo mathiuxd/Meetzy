@@ -1,4 +1,3 @@
-using System;
 using Meetzy.Domain.Exceptions;
 
 namespace Meetzy.Domain;
@@ -17,7 +16,7 @@ public class Community
     private Community() { }
 
     public Community(string name, CommunityType type, Guid createdBy, string? description = null)
-    {   
+    {
         ValidateName(name);
         CommunityId = Guid.NewGuid();
         Name = name;

@@ -1,4 +1,3 @@
-using System;
 using Meetzy.Domain.Exceptions;
 
 namespace Meetzy.Domain;
@@ -19,7 +18,7 @@ public class Friendship
         Id = Guid.NewGuid();
         UserSendId = userSendId;
         UserReceivesId = userReceivesId;
-        Status = FriendshipStatus.Pending; // siempre empieza Pending
+        Status = FriendshipStatus.Pending;
     }
 
     public void Accept()

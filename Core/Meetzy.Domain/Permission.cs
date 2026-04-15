@@ -1,5 +1,3 @@
-using System;
-
 namespace Meetzy.Domain;
 
 public class Permission

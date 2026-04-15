@@ -23,7 +23,7 @@ namespace Meetzy.Application.UseCases.Events.Queries.GetAllEvents
                 @event.EventId,
                 @event.Title,
                 @event.City,
-                @event.DateTime,
+                @event.EventDateTime,
                 @event.CreatorId
             ));
         }

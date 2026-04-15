@@ -28,7 +28,7 @@ namespace Meetzy.Application.UseCases.Events.Queries.GetEventById
                 @event.Description,
                 @event.Location,
                 @event.City,
-                @event.DateTime,
+                @event.EventDateTime,
                 @event.MaxAttendees,
                 @event.CreatorId,
                 @event.CommunityId,
