@@ -4,11 +4,17 @@ using Meetzy.Domain;
 
 namespace Meetzy.Persistence.Configurations
 {
-    public class CommunityMembersConfiguration : IEntityTypeConfiguration<CommunityMembers>
+    public class CommunityMembersConfiguration : IEntityTypeConfiguration<CommunityMember>
     {
+<<<<<<< HEAD
         public void Configure(EntityTypeBuilder<CommunityMembers> builder)
             {
             builder.ToTable("CommunityMember");
+=======
+        public void Configure(EntityTypeBuilder<CommunityMember> builder)
+        {
+            builder.ToTable("CommunityMembers");
+>>>>>>> f126229040b548a21c567f01f830fe81c485401f
             builder.HasKey(cm => cm.Id);
             builder.Property(cm => cm.Id).ValueGeneratedNever();
             builder.Property(cm => cm.JoinedAt)
@@ -19,7 +25,7 @@ namespace Meetzy.Persistence.Configurations
                 .HasForeignKey(cm => cm.CommunityId)
                 .OnDelete(DeleteBehavior.Cascade);
             builder.HasOne(cm => cm.User)
-                .WithMany(u => u.CommunityMemberships)
+                .WithMany()
                 .HasForeignKey(cm => cm.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
         }

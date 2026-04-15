@@ -11,18 +11,18 @@ namespace Meetzy.Persistence.Configurations
             builder.ToTable("Friendships");
             builder.HasKey(f => f.Id);
             builder.Property(f => f.Id).ValueGeneratedNever();
-            builder.Property(f => f.CreatedAt)
-                .IsRequired();
+         
             // Relationships
-            builder.HasOne(f => f.UserSends)
-                .WithMany(u => u.FriendshipsInitiated)
-                .HasForeignKey(f => f.User1Id)
+            builder.HasOne(f => f.UserSend)
+               .WithMany() 
+               .HasForeignKey(f => f.UserSendId)
+               .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(f => f.UserReceives)
+                .WithMany()
+                .HasForeignKey(f => f.UserReceivesId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasOne(f => f.User2)
-                .WithMany(u => u.UserReceived)
-                .HasForeignKey(f => f.User)
-                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
