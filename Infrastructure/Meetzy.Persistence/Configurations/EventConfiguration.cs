@@ -41,7 +41,7 @@ namespace Meetzy.Persistence.Configurations
             builder.Property(e => e.CreatedAt)
                 .IsRequired();
 
-            // Relationships
+            // Relationships .
             builder.HasMany(e => e.Attendees)
                 .WithOne(a => a.Event)
                 .HasForeignKey(a => a.EventId)
@@ -52,7 +52,7 @@ namespace Meetzy.Persistence.Configurations
                 .HasForeignKey(c => c.EventId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // Creator relationship (if User mapped)
+            // Creator relationship 
             builder.HasOne<User>()
                 .WithMany()
                 .HasForeignKey(e => e.CreatorId)

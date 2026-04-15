@@ -13,6 +13,14 @@ namespace Meetzy.Persistence
 
         public DbSet<Section> Sections { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<EventAttendee> EventAttendees { get; set; }
+        public DbSet<Community> Communities { get; set; }
+        public DbSet<CommunityMember> CommunityMembers { get; set; }
+        public DbSet<FriendShip> FriendShips { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
