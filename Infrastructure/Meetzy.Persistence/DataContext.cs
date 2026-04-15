@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Meetzy.Domain.Entities.Sections;
+using Meetzy.Domain;
 
 namespace Meetzy.Persistence
 {
@@ -11,10 +12,11 @@ namespace Meetzy.Persistence
         }
 
         public DbSet<Section> Sections { get; set; }
+        public DbSet<Event> Events { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.AppyConfigurationsFromAssembly(typeof(DataContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
             base.OnModelCreating(modelBuilder);
 
         }
