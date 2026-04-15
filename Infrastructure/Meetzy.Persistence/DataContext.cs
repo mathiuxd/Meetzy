@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Meetzy.Domain.Entities.Sections;
+
 using Meetzy.Domain;
 
 namespace Meetzy.Persistence

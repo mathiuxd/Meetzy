@@ -7,4 +7,10 @@
     <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Meetzy.Application\Meetzy.Application.csproj" />
+    <ProjectReference Include="..\Core\Meetzy.Domain\Meetzy.Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure\Meetzy.Persistence\Meetzy.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

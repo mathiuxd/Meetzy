@@ -1,7 +1,5 @@
-using Meetzy.Aplication.Contracts.Repositories;
+using Meetzy.Application.Contracts.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 
 namespace Meetzy.Persistence.Repositories
 {
@@ -13,34 +11,30 @@ namespace Meetzy.Persistence.Repositories
         {
             _dbContext = dbContext;
         }
-    
-        public Task<T> CreateAsync(T entity)
+
+        public async Task<T?> GetByIdAsync(Guid id)
         {
-            _dbContext.Add(entity);
-            return Task.FromResult(entity);
+            return await _dbContext.Set<T>().FindAsync(id);
         }
 
-        public Task DeleteAsync(T entity)
-        {
-            _dbContext.Remove(entity);
-            return Task.CompletedTask;
-        }
-
-        public Task<T?> GetByIdAsync(Guid id)
-        {
-            return await _dbContext.FindAsync(id);
-        }
-
-        public async Task<IEnumerable<T>> GetListAsync()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _dbContext.Set<T>().ToListAsync();
         }
 
-        public Task UpdateAsync(T entity)
+        public async Task AddAsync(T entity)
+        {
+            await _dbContext.AddAsync(entity);
+        }
+
+        public void Update(T entity)
         {
             _dbContext.Update(entity);
-            return Task.FromResult(entity);
+        }
+
+        public void Delete(T entity)
+        {
+            _dbContext.Remove(entity);
         }
     }
-
 }

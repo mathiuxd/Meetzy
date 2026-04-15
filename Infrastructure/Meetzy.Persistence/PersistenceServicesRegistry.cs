@@ -4,9 +4,6 @@ using Meetzy.Application.Contracts.Persistence;
 using Meetzy.Application.Contracts.Repositories;
 using Meetzy.Persistence.Repositories;
 using Meetzy.Persistence.UnitOfWorks;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Meetzy.Persistence.Repositories
 {
@@ -14,7 +11,7 @@ namespace Meetzy.Persistence.Repositories
 	{
 		public static IServiceCollection AddPersistenceRepositories(this IServiceCollection services)
 		{
-			services.AddDbContext<MeetzyDbContext>(options =>
+			services.AddDbContext<DataContext>(options =>
 			{
 				options.UseSqlServer("name=MeetzyConnectionString");
 			});
