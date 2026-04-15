@@ -39,7 +39,7 @@ namespace Meetzy.Application.UseCases.Events.Commands.CreateEvent
                 @event.Title,
                 @event.Location,
                 @event.City,
-                @event.DateTime,
+                @event.EventDateTime,
                 @event.CreatorId,
                 @event.CommunityId,
                 @event.CreatedAt

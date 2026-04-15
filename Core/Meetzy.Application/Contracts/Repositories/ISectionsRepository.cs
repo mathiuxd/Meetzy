@@ -1,9 +1,9 @@
-﻿using System.Collections.Specialized;
+﻿using Meetzy.Application.Contracts.Persistence;
+using Meetzy.Domain;
 
 namespace Meetzy.Application.Contracts.Repositories
 {
-    internal interface ISectionsRepository
+    public interface ISectionsRepository : IRepository<Section>
     {
-        Task UpdateAsync(BitVector32.Section? section);
     }
 }

@@ -34,7 +34,7 @@ namespace Meetzy.Application.UseCases.Events.Commands.UpdateEvent
                 @event.EventId,
                 @event.Title,
                 @event.Description,
-                @event.DateTime,
+                @event.EventDateTime,
                 @event.MaxAttendees
             );
         }

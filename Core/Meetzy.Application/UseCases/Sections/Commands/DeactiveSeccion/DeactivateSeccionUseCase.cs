@@ -4,31 +4,31 @@ using Meetzy.Application.Utilities.Mediator;
 using Meetzy.Domain;
 using Meetzy.Domain.Exceptions;
 
-namespace Meetzy.Application.UseCases.Sections.Commands.ActivateSection
+namespace Meetzy.Application.UseCases.Sections.Commands.DeactiveSeccion
 {
-    public class ActivateSectionUseCase : IRequestHandler<ActivateSectionCommand>
+    public class DeactivateSeccionUseCase : IRequestHandler<DeactivateSeccionCommand>
     {
         private readonly ISectionsRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ActivateSectionUseCase(ISectionsRepository repository, IUnitOfWork unitOfWork)
+        public DeactivateSeccionUseCase(ISectionsRepository repository, IUnitOfWork unitOfWork)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
         }
 
-        public async Task Handle(ActivateSectionCommand command)
+        public async Task Handle(DeactivateSeccionCommand command)
         {
             Section? section = await _repository.GetByIdAsync(command.Id);
 
-            if (section is null) 
+            if (section is null)
             {
                 throw new BussinessRuleExceptions($"No existe sección con id '{command.Id}'");
             }
 
             try
             {
-                section.Activate();
+                section.Deactivate();
                 _repository.Update(section);
                 await _unitOfWork.CommitAsync();
             }

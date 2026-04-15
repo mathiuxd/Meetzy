@@ -1,5 +1,3 @@
-using System;
-
 namespace Meetzy.Domain;
 
 public class RolePermission
@@ -19,4 +17,3 @@ public class RolePermission
         PermissionId = permissionId;
     }
 }
-

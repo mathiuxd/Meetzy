@@ -1,4 +1,5 @@
 using Meetzy.Domain.Exceptions;
+
 namespace Meetzy.Domain;
 
 public class User
@@ -14,15 +15,12 @@ public class User
     public Guid RoleId { get; private set; }
     public Role Role { get; private set; } = null!;
 
-    
     private User() { }
 
     public User(string name, string email, string password, Guid roleId)
-    {   
-
+    {
         ValidateName(name);
         ValidateEmail(email);
-
 
         UserId = Guid.NewGuid();
         Name = name;

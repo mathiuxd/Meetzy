@@ -2,24 +2,12 @@
 {
     public class BussinessRuleExceptions : Exception
     {
-        public BussinessRuleExceptions(string message) : base(message) 
+        public BussinessRuleExceptions(string message) : base(message)
         {
-
         }
 
-        public class BussinesRuleException : Exception
+        public BussinessRuleExceptions(string? message, Exception? innerException) : base(message, innerException)
         {
-            public BussinesRuleException()
-            {
-            }
-
-            public BussinesRuleException(string? message) : base(message)
-            {
-            }
-
-            public BussinesRuleException(string? message, Exception? innerException) : base(message, innerException)
-            {
-            }
         }
     }
 }
