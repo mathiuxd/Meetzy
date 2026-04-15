@@ -8,7 +8,7 @@ namespace Meetzy.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<CommunityMembers> builder)
             {
-            builder.ToTable("CommunityMembers");
+            builder.ToTable("CommunityMember");
             builder.HasKey(cm => cm.Id);
             builder.Property(cm => cm.Id).ValueGeneratedNever();
             builder.Property(cm => cm.JoinedAt)
@@ -23,3 +23,5 @@ namespace Meetzy.Persistence.Configurations
                 .HasForeignKey(cm => cm.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
+    }
+}

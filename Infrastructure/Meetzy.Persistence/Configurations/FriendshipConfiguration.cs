@@ -14,13 +14,14 @@ namespace Meetzy.Persistence.Configurations
             builder.Property(f => f.CreatedAt)
                 .IsRequired();
             // Relationships
-            builder.HasOne(f => f.User1)
+            builder.HasOne(f => f.UserSends)
                 .WithMany(u => u.FriendshipsInitiated)
                 .HasForeignKey(f => f.User1Id)
                 .OnDelete(DeleteBehavior.Cascade);
+
             builder.HasOne(f => f.User2)
-                .WithMany(u => u.FriendshipsReceived)
-                .HasForeignKey(f => f.User2Id)
+                .WithMany(u => u.UserReceived)
+                .HasForeignKey(f => f.User)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }
