@@ -15,6 +15,9 @@ namespace Meetzy.Persistence
         public DbSet<RolePermission> RolePermissions { get; set; }
         public DbSet<Friendship> Friendships { get; set; }
         public DbSet<EventAttendee> EventAttendees { get; set; }
+        public DbSet<Community> Communities { get; set; }
+        public DbSet<CommunityMember> CommunityMembers { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

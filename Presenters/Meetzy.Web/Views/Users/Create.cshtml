@@ -1,0 +1,35 @@
+﻿@model Meetzy.Application.UseCases.Users.Commands.CreateUser.CreateUserRequest
+
+@{
+    ViewData["Title"] = "Crear Usuario";
+}
+
+<h2>Crear Usuario</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label asp-for="Name">Nombre</label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+        <label asp-for="Password">Contraseña</label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <div>
+        <label asp-for="RoleId">ID del Rol</label>
+        <input asp-for="RoleId" />
+        <span asp-validation-for="RoleId"></span>
+    </div>
+
+    <button type="submit">Crear</button>
+</form>

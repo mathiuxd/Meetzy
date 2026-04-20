@@ -1,7 +1,9 @@
 <Solution>
+  <Folder Name="/Presenters/">
+    <Project Path="Presenters/Meetzy.Web/Meetzy.Web.csproj" />
+  </Folder>
   <Project Path="Core/Meetzy.Application/Meetzy.Application.csproj" />
   <Project Path="Core/Meetzy.Domain/Meetzy.Domain.csproj" />
   <Project Path="Infrastructure/Meetzy.Persistence/Meetzy.Persistence.csproj" />
-  <Project Path="Meetzy.Web/Meetzy.Web.csproj" Id="e8fa43f8-ce30-4272-9502-c7199ff08753" />
   <Project Path="Tests/Meetzy.Tests/Meetzy.Tests.csproj" />
 </Solution>
