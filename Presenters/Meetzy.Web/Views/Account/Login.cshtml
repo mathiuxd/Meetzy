@@ -1,28 +1,28 @@
 ﻿@model Meetzy.Application.UseCases.Users.Commands.LoginUser.LoginUserRequest
 
 @{
-    ViewData["Title"] = "Iniciar Sesión";
+    ViewData["Title"] = "Login";
 }
 
 <div class="row justify-content-center mt-5">
     <div class="col-md-4">
         <div class="card shadow">
             <div class="card-body p-4">
-                <h3 class="card-title text-center mb-4">Iniciar Sesión</h3>
+                <h3 class="card-title text-center mb-4">Login</h3>
                 <form asp-action="Login" method="post">
                     <div asp-validation-summary="All" class="text-danger mb-3"></div>
                     <div class="mb-3">
-                        <label asp-for="Email" class="form-label">Correo electrónico</label>
-                        <input asp-for="Email" class="form-control" placeholder="correo@ejemplo.com" />
+                        <label asp-for="Email" class="form-label">Email</label>
+                        <input asp-for="Email" class="form-control" placeholder="email@example.com" />
                     </div>
                     <div class="mb-3">
-                        <label asp-for="Password" class="form-label">Contraseña</label>
+                        <label asp-for="Password" class="form-label">Password</label>
                         <input asp-for="Password" type="password" class="form-control" placeholder="••••••••" />
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">Acceder</button>
+                    <button type="submit" class="btn btn-primary w-100">Sign In</button>
                 </form>
                 <hr />
-                <p class="text-center mb-0">¿No tienes cuenta? <a href="/Account/Register">Regístrate</a></p>
+                <p class="text-center mb-0">Don't have an account? <a href="/Account/Register">Register</a></p>
             </div>
         </div>
     </div>

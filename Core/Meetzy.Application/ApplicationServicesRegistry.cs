@@ -6,6 +6,11 @@ using Meetzy.Application.UseCases.Events.Commands.DeleteEvent;
 using Meetzy.Application.UseCases.Events.Commands.UpdateEvent;
 using Meetzy.Application.UseCases.Events.Queries.GetAllEvents;
 using Meetzy.Application.UseCases.Events.Queries.GetEventById;
+using Meetzy.Application.UseCases.Communities.Commands.CreateCommunity;
+using Meetzy.Application.UseCases.Communities.Commands.DeleteCommunity;
+using Meetzy.Application.UseCases.Communities.Commands.UpdateCommunity;
+using Meetzy.Application.UseCases.Communities.Queries.GetAllCommunities;
+using Meetzy.Application.UseCases.Communities.Queries.GetCommunityById;
 using Meetzy.Application.Utilities.Mediator;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,6 +32,13 @@ namespace Meetzy.Application
             services.AddTransient<IRequestHandler<DeleteEventRequest, DeleteEventResponse>, DeleteEventHandler>();
             services.AddTransient<IRequestHandler<GetAllEventsRequest, IEnumerable<GetAllEventsResponse>>, GetAllEventsHandler>();
             services.AddTransient<IRequestHandler<GetEventByIdRequest, GetEventByIdResponse>, GetEventByIdHandler>();
+
+            // Communities
+            services.AddTransient<IRequestHandler<CreateCommunityRequest, CreateCommunityResponse>, CreateCommunityHandler>();
+            services.AddTransient<IRequestHandler<UpdateCommunityRequest, UpdateCommunityResponse>, UpdateCommunityHandler>();
+            services.AddTransient<IRequestHandler<DeleteCommunityRequest, DeleteCommunityResponse>, DeleteCommunityHandler>();
+            services.AddTransient<IRequestHandler<GetAllCommunitiesRequest, IEnumerable<GetAllCommunitiesResponse>>, GetAllCommunitiesHandler>();
+            services.AddTransient<IRequestHandler<GetCommunityByIdRequest, GetCommunityByIdResponse>, GetCommunityByIdHandler>();
 
             return services;
         }

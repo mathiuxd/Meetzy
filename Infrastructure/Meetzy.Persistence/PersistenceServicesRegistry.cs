@@ -20,7 +20,8 @@ public static class PersistenceServicesRegistry
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         services.AddScoped<IUnitOfWork, EfCoreUnitOfWork>();
         services.AddScoped<ISectionsRepository, SectionsRepository>();
-        services.AddScoped<IUserRepository, UserRepository>(); // ← AGREGAR
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ICommunityRepository, EfCoreCommunityRepository>();
 
         return services;
     }

@@ -24,7 +24,12 @@ namespace Meetzy.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create() => View();
+        public IActionResult Create()
+        {
+            var creatorId = Guid.Parse(HttpContext.Session.GetString("UserId") ?? Guid.Empty.ToString());
+            ViewBag.CreatorId = creatorId;
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateEventRequest request)
@@ -50,8 +55,15 @@ namespace Meetzy.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> Delete(Guid id)
+        {
+            var ev = await _mediator.Send(new GetEventByIdRequest(id));
+            return View(ev);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Guid id, IFormCollection form)
         {
             await _mediator.Send(new DeleteEventRequest(id));
             return RedirectToAction("Index");

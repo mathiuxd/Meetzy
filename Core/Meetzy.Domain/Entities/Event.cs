@@ -70,7 +70,7 @@ public class Event
 
     private static void ValidateDateTime(DateTime dateTime)
     {
-        if (dateTime <= DateTime.UtcNow)
+        if (dateTime <= DateTime.Now)
             throw new BussinessRuleExceptions("La fecha del evento debe ser en el futuro.");
     }
 }

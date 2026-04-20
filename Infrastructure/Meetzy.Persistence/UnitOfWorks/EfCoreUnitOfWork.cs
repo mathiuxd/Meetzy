@@ -10,7 +10,7 @@ namespace Meetzy.Persistence.UnitOfWorks
 
         public IUserRepository Users { get; }
         public IEventRepository Events { get; }
-        public ICommunityRepository Communities => throw new NotImplementedException();
+        public ICommunityRepository Communities { get; }
         public IFriendshipRepository Friendships => throw new NotImplementedException();
         public ICommentRepository Comments => throw new NotImplementedException();
         public ISectionsRepository Sections => throw new NotImplementedException();
@@ -22,6 +22,7 @@ namespace Meetzy.Persistence.UnitOfWorks
             Users = new EfCoreUserRepository(_dbContext);
             Roles = new EfCoreRoleRepository(_dbContext);
             Events = new EfCoreEventRepository(_dbContext);
+            Communities = new EfCoreCommunityRepository(_dbContext);
         }
 
         public async Task CommitAsync() => await _dbContext.SaveChangesAsync();

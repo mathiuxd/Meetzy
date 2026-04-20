@@ -33,4 +33,10 @@ public class Community
         if (name.Length > 150)
             throw new BussinessRuleExceptions("El nombre no puede superar los 150 caracteres.");
     }
+    public void UpdateDetails(string name, string? description)
+    {
+        ValidateName(name);
+        Name = name;
+        Description = description;
+    }
 }

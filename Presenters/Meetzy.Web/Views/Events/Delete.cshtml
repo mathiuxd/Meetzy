@@ -1,0 +1,14 @@
+﻿@model Meetzy.Application.UseCases.Events.Queries.GetEventById.GetEventByIdResponse
+@{
+    ViewData["Title"] = "Eliminar Evento";
+}
+
+<h2>¿Eliminar este evento?</h2>
+<p><strong>Título:</strong> @Model.Title</p>
+<p><strong>Fecha:</strong> @Model.DateTime.ToString("dd/MM/yyyy HH:mm")</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="id" value="@Model.EventId" />
+    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

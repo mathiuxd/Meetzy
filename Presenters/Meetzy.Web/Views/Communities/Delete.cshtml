@@ -1,0 +1,30 @@
+﻿@model Meetzy.Application.UseCases.Communities.Queries.GetCommunityById.GetCommunityByIdResponse
+
+@{
+    ViewData["Title"] = "Delete Community";
+}
+
+<h1>Delete Community</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div>
+    <h4>Community</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Name</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+
+        <dt class="col-sm-2">Created At</dt>
+        <dd class="col-sm-10">@Model.CreatedAt</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" name="id" value="@Model.CommunityId" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </form>
+</div>

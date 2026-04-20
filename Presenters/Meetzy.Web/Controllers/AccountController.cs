@@ -26,6 +26,7 @@ public class AccountController : Controller
             // Guardar sesión (HttpContext.Session o Claims)
             HttpContext.Session.SetString("UserName", result.Name);
             HttpContext.Session.SetString("UserRole", result.Role);
+            HttpContext.Session.SetString("UserId", result.UserId.ToString());
             return RedirectToAction("Index", "Home");
         }
         catch (Exception ex)

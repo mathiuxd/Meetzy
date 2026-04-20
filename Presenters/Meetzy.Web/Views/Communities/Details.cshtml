@@ -1,0 +1,27 @@
+﻿@model Meetzy.Application.UseCases.Communities.Queries.GetCommunityById.GetCommunityByIdResponse
+
+@{
+    ViewData["Title"] = "Community Details";
+}
+
+<h1>Community Details</h1>
+
+<div>
+    <h4>Community</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Name</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+
+        <dt class="col-sm-2">Created At</dt>
+        <dd class="col-sm-10">@Model.CreatedAt</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CommunityId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
